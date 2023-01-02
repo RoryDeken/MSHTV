@@ -3,4 +3,9 @@
     <string name="tab_text_videos">Videos</string>
     <string name="tab_text_news">News</string>
     <string name="tab_text_camp">Camp</string>
+    <string name="error_messsage">There was an error, please try again.</string>
+    <string name="error_title">Oops sorry</string>
+    <string name="store_url">https://www.mshtv.com/shop?format=json-pretty</string>
+    <string name="dark_sky_url">https://api.darksky.net/forecast</string>
+    <string name="network_unavailable_message">Sorry, network is unavailable</string>
 </resources>
