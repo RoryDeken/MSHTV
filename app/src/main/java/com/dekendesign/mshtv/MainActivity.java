@@ -6,6 +6,7 @@ import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.textclassifier.TextLinks;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -29,7 +30,6 @@ public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
     public static final String TAG = MainActivity.class.getSimpleName();
-    private JSONObject campInfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +37,9 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         String url = getString(R.string.store_url);
+
+
+
 
         if (isNetworkavailable()) {
             OkHttpClient client = new OkHttpClient();
@@ -55,7 +58,8 @@ public class MainActivity extends AppCompatActivity {
                         String jsonData = response.body().string();
                         Log.v(TAG, jsonData);
                         if (response.isSuccessful()) {
-                            campInfo = getCampPageInfo(jsonData);
+                            JSONObject results = parseJson(jsonData);
+                            // Do stuff with the data you got here.
                         } else {
                             alertUserAboutError();
                         }
@@ -71,11 +75,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private JSONObject getCampPageInfo(String jsonData) throws JSONException {
-        JSONObject pageInfo = new JSONObject(jsonData);
-        String mainContent = pageInfo.getString("website");
-        Log.i(TAG, "From json with main content: " + mainContent);
-        return pageInfo;
+
+    private JSONObject parseJson(String jsonData) throws JSONException {
+        JSONObject json = new JSONObject(jsonData);
+        return json;
     }
 
     private boolean isNetworkavailable() {
