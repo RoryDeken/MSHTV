@@ -116,6 +116,12 @@ export default function App() {
 function HomeScreen() {
   return (
     <View style={styles.container}>
+      <Image
+        source={{
+          uri: "https://reactnative.dev/docs/assets/p_cat2.png",
+        }}
+        style={{ width: 200, height: 200 }}
+      />
       <Text>MSHTV</Text>
     </View>
   );
